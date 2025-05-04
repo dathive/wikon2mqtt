@@ -1,0 +1,24 @@
+version: '3'
+services:
+  scraper:
+    build: .
+    environment:
+      SELENIUM_URL: ${SELENIUM_URL}
+      MQTT_BROKER: ${MQTT_BROKER}
+      MQTT_PORT: ${MQTT_PORT}
+      MQTT_TOPIC: ${MQTT_TOPIC}
+      WIKON_URL: ${WIKON_URL}
+      WIKON_USERNAME: ${WIKON_USERNAME}
+      WIKON_PASSWORD: ${WIKON_PASSWORD}
+    depends_on:
+      - selenium
+
+  selenium:
+    #image: selenium/standalone-chrome
+    image: seleniarm/standalone-chromium
+    ports:
+      - "4444:4444"
+
+networks:
+  default:
+    driver: bridge
