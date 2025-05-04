@@ -18,7 +18,7 @@ from mqtt_client import MQTTPublisher
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def processor():
-    logging.info("Début du traitement Wikon > MQTT")
+    logging.info("Starting to process Wikon > MQTT")
     print(SELENIUM_URL)
     scraper = WikonScraper(
         selenium_url=SELENIUM_URL,
@@ -37,12 +37,11 @@ def processor():
     publisher.publish(data)
     publisher.disconnect()
 
-    logging.info("Traitement terminé avec succès")
+    logging.info("Process completed successfully")
 
 if __name__ == "__main__":
-    #schedule.every().minute.do(processor)
     schedule.every().day.at("09:00").do(processor)
-    logging.info("Scheduler actif. En attente de 09:00...")
+    logging.info("Scheduler active. Waiting for 09:00...")
     while True:
         schedule.run_pending()
         time.sleep(60)

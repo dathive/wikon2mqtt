@@ -1,5 +1,7 @@
 # Wikon2MQTT
 
+![Logo](./assets/logo.png)
+
 ## 🛢️ Wikon to Home Assistant via MQTT
 
 This project retrieves gas tank data from Wikon platform (level and forecast) using Selenium, then publishes it daily to Home Assistant via MQTT.
